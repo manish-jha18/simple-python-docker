@@ -22,4 +22,4 @@ Test:
 
 Notes:
 - The Flask app listens on 0.0.0.0:5000 so it will be reachable from the host when the container runs.
-- If you want to run with Gunicorn for production, I can update the Dockerfile and requirements accordingly.
+
