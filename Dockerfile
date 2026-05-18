@@ -1,25 +1,20 @@
-# Use a small official Python image
+# Use official Python image
 FROM python:3.11-slim
 
-# Prevent Python from writing .pyc files and buffer stdout/stderr
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
+# Set working directory
 WORKDIR /app
 
-# Install build deps, install requirements, then remove build deps to keep image small
+# Copy requirements file
 COPY requirements.txt .
-RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends build-essential gcc && \
-    pip install --no-cache-dir -r requirements.txt && \
-    apt-get remove -y build-essential gcc && apt-get autoremove -y && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 
-# Copy app code
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy app files
 COPY . .
 
-# Expose the port the app uses
+# Expose app port
 EXPOSE 5000
 
-# Default command to run the app
+# Run the application
 CMD ["python", "app.py"]
