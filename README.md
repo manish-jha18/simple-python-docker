@@ -2,17 +2,16 @@
 
 This repository contains a minimal Flask application (app.py) and Docker configuration to run it locally.
 
-Build the Docker image:
+This is a simple Flask application running inside Docker.
 
-  docker build -t simple-python-docker .
+## Build Docker Image
+
+docker build -t simple-python-app .
 
 Run the container:
 
-  docker run --rm -p 5000:5000 simple-python-docker
+docker run -d -p 5000:5000 --name python-app simple-python-app
 
-Using docker-compose:
-
-  docker-compose up --build
 
 Test:
 
