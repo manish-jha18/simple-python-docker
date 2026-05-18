@@ -1,0 +1,2 @@
+Flask>=2.2,<3
+# Add other dependencies here if you need them, e.g. requests, gunicorn, etc.
